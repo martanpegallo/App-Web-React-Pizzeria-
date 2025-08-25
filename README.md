@@ -10,7 +10,7 @@ Proyecto realizado por Martin Perez Gallo para la prueba del modulo de React G93
 ## Commits para evaluacion
 - Hito 1: [commit 4e62bd8858236f2cbc7f2ca8dee6c028f126b36d](https://github.com/martanpegallo/App-Web-React-Pizzeria-/commit/4e62bd8858236f2cbc7f2ca8dee6c028f126b36d)
 
-- Hito 2: commit 
+- Hito 2: [commit 46d50d6bdea20f30b798fb467c67bb67436eb743](46d50d6bdea20f30b798fb467c67bb67436eb743)
 
 Gracias
 
