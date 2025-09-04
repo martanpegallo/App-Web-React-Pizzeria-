@@ -24,7 +24,7 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <button type="button" class="btn btn-outline-secondary btn-sm  m-1">
+                <button type="button" className="btn btn-outline-secondary btn-sm  m-1">
                   <a className="nav-link active" aria-current="page" href="#">
                     Home
                   </a>
@@ -37,7 +37,7 @@ function Navbar() {
                     Logout
                   </a>
                 </button> : 
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1">
+                <button type="button" className="btn btn-outline-secondary btn-sm m-1">
                   <a className="nav-link" href="#">
                     Login
                   </a>
@@ -51,7 +51,7 @@ function Navbar() {
                   Profile
                   </a>
                 </button> : 
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1">
+                <button type="button" className="btn btn-outline-secondary btn-sm m-1">
                   <a className="nav-link" href="#">
                     Register
                   </a>

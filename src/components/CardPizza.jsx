@@ -1,15 +1,20 @@
-function CardPizza({name,price,ingredients,img}) {
+function CardPizza({id,nombre,descripcion,precio,ingredientes,imagen}) {
     return (
-        <div className="card m-2 g-1" style={{maxWidth: '540px'}}>
+        <div key={id} className="card m-2 g-1" style={{maxWidth: '540px'}}>
             <div className="row g-0">
                 <div className="col-md-12">
-                    <img src={img} className="img-fluid rounded-start" alt={name}/>
+                    <img src={imagen} className="img-fluid rounded-start" alt={nombre}/>
                 </div>
                 <div className="col-md-12">
                     <div className="card-body">
-                        <h5 className="card-title fs-2">{name}</h5>
-                        <p className="card-text">{ingredients.join(", ")}</p>
-                        <p className="card-text fs-4"><small className="text-muted">Precio: ${price.toLocaleString('es-CL')}</small></p>
+                        <h5 className="card-title fs-2">{nombre}</h5>
+                        <h6 className="card-subtitle mb-2 text-muted">{descripcion}</h6>
+                        <ul>
+                            {ingredientes.map((ingrediente, index) => (
+                                <li key={index} className="list-group list-group-flush">{ingrediente}</li>
+                            ))}
+                        </ul>
+                        <p className="card-text fs-4"><small className="text-muted">Precio: ${precio.toLocaleString('es-CL')}</small></p>
                     </div>
                     <div>
                         <button type="button" className="btn btn-outline-secondary btn-sm m-1">
