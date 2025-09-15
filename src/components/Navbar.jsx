@@ -1,3 +1,5 @@
+import { Link, useNavigate } from "react-router-dom";
+
 function Navbar() {
   const total=25000;
   const token=false; // Simulating a token for demonstration purposes
@@ -7,9 +9,9 @@ function Navbar() {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link className="navbar-brand" to={"/"}>
             Pizzería Mamma Mia!
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -24,10 +26,10 @@ function Navbar() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <button type="button" className="btn btn-outline-secondary btn-sm  m-1">
-                  <a className="nav-link active" aria-current="page" href="#">
+                <button type="button" className="btn btn-outline-secondary btn-sm m-1">
+                  <Link className="nav-link active" aria-current="page" to={"/"}>
                     Home
-                  </a>
+                  </Link>
                 </button>
               </li>
               <li className="nav-item">
@@ -38,9 +40,9 @@ function Navbar() {
                   </a>
                 </button> : 
                 <button type="button" className="btn btn-outline-secondary btn-sm m-1">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/login">
                     Login
-                  </a>
+                  </Link>
                 </button>
               }
               </li>
@@ -52,18 +54,17 @@ function Navbar() {
                   </a>
                 </button> : 
                 <button type="button" className="btn btn-outline-secondary btn-sm m-1">
-                  <a className="nav-link" href="#">
+                  <Link className="nav-link" to="/register">
                     Register
-                  </a>
+                  </Link>
                 </button>
               }
               </li>
             </ul>
             <form className="d-flex" role="search">
-              <button className="btn btn-outline-success" type="submit">
-                <i className="bi bi-cart"></i>
-                Total: ${total.toLocaleString('es-CL')}
-              </button>
+              <Link to="/cart" className="btn btn-outline-success m-1">
+                <i className="bi bi-cart"></i> Total: ${total.toLocaleString('es-CL')}
+              </Link>
             </form>
           </div>
         </div>

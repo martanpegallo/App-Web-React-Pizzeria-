@@ -1,3 +1,5 @@
+import { Link, useParams } from "react-router-dom";
+
 function CardPizza({ id, nombre, descripcion, precio, ingredientes, imagen }) {
   return (
     <div key={id} className="card m-2 g-1" style={{ maxWidth: "320px" }}>
@@ -36,9 +38,10 @@ function CardPizza({ id, nombre, descripcion, precio, ingredientes, imagen }) {
               type="button"
               className="btn btn-outline-secondary btn-sm m-1"
             >
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" aria-current="page" to={"/pizza/" + id}>
+                {" "} 
                 ver mas
-              </a>
+              </Link>
             </button>
           </div>
         </div>

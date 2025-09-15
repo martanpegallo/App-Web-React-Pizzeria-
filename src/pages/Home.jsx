@@ -1,5 +1,5 @@
-import Header from "./Header";
-import CardPizza from "./CardPizza";
+import Header from "../components/Header";
+import CardPizza from "../components/CardPizza";
 import { useState, useEffect } from "react";
 // import { pizzas } from "../assets/pizzas";
 
@@ -18,7 +18,7 @@ function Home() {
     }
     fetchPizzas()
   }, []);
-
+// 
   return (
     <>
       <Header />
@@ -34,7 +34,7 @@ function Home() {
             precio={pizzas.price}
             ingredientes={pizzas.ingredients}
             imagen={pizzas.img}
-          />
+            />
           ))}
           
         </div>
