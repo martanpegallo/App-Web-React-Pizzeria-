@@ -1,15 +1,22 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 const Pizza = () => {
+  const { agregarAlCarrito } = useContext(CartContext);
   const [pizza, setPizza] = useState([]);
   console.log(pizza);
 
   useEffect(() => {
     async function fetchPizza() {
-      const res = await fetch("http://localhost:5000/api/pizzas/p001");
-      const data = await res.json();
-      setPizza(data);
+      try {
+        const res = await fetch("http://localhost:5000/api/pizzas/p001");
+        const data = await res.json();
+        setPizza(data);
+      } catch (error) {
+        console.error("Error fetching pizza data:", error);
+      }
     }
     fetchPizza();
   }, []);
@@ -51,11 +58,12 @@ const Pizza = () => {
               <button
                 type="button"
                 className="btn btn-outline-secondary btn-sm m-1"
+                onClick={() => agregarAlCarrito({ id, nombre, descripcion, precio, ingredientes, imagen })}
               >
-                <a className="nav-link active" aria-current="page" href="#">
+                <Link className="nav-link active" aria-current="page" to={"/cart"}>
                   {" "}
                   Agregar al carrito
-                </a>
+                </Link>
               </button>
             </div>
           </div>

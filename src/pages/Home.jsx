@@ -1,24 +1,29 @@
 import Header from "../components/Header";
 import CardPizza from "../components/CardPizza";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { APIContext } from "../context/APIContext";
 // import { pizzas } from "../assets/pizzas";
 
-
-
 function Home() {
-
-  const [pizzaList, setPizzaList] = useState([]);
+  const { pizzaList } = useContext(APIContext);
   console.log(pizzaList);
 
-  useEffect (() => {
-    async function fetchPizzas() {
-      const res = await fetch("http://localhost:5000/api/pizzas")
-      const data = await res.json()
-      setPizzaList(data)
-    }
-    fetchPizzas()
-  }, []);
-// 
+  // const [pizzaList, setPizzaList] = useState([]);
+  // console.log(pizzaList);
+
+  // useEffect (() => {
+  //   async function fetchPizzas() {
+  //     try {
+  //       const res = await fetch("http://localhost:5000/api/pizzas")
+  //       const data = await res.json()
+  //       setPizzaList(data)
+  //     } catch (error) {
+  //       console.error("Error fetching pizza data:", error);
+  //     }
+  //   }
+  //   fetchPizzas()
+  // }, []);
+
   return (
     <>
       <Header />
@@ -36,7 +41,6 @@ function Home() {
             imagen={pizzas.img}
             />
           ))}
-          
         </div>
       </div>
     </>

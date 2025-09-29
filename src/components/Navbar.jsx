@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function Navbar() {
-  const total=25000;
+  const {totalFinal} = useContext(CartContext);
   const token=false; // Simulating a token for demonstration purposes
   // In a real application, you would retrieve this from your authentication state or context
 
@@ -63,7 +65,7 @@ function Navbar() {
             </ul>
             <form className="d-flex" role="search">
               <Link to="/cart" className="btn btn-outline-success m-1">
-                <i className="bi bi-cart"></i> Total: ${total.toLocaleString('es-CL')}
+                <i className="bi bi-cart"></i> Total: ${totalFinal.toLocaleString('es-CL')}
               </Link>
             </form>
           </div>

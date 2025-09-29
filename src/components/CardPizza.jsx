@@ -1,6 +1,11 @@
 import { Link, useParams } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 
 function CardPizza({ id, nombre, descripcion, precio, ingredientes, imagen }) {
+
+  const { agregarAlCarrito } = useContext(CartContext);
+  
   return (
     <div key={id} className="card m-2 g-1" style={{ maxWidth: "320px" }}>
       <div className="row g-0">
@@ -28,11 +33,12 @@ function CardPizza({ id, nombre, descripcion, precio, ingredientes, imagen }) {
             <button
               type="button"
               className="btn btn-outline-secondary btn-sm m-1"
+              onClick={() => agregarAlCarrito({ id, nombre, descripcion, precio, ingredientes, imagen })}
             >
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" aria-current="page" to={"/cart"}>
                 {" "}
                 Agregar al carrito
-              </a>
+              </Link>
             </button>
             <button
               type="button"
