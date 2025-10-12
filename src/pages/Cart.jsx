@@ -2,10 +2,13 @@ import { useState } from "react";
 import { pizzaCart, pizzas } from "../assets/pizzas";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 const cart = () => {
   const { cart, aumentarCantidad, disminuirCantidad, totalFinal } =
     useContext(CartContext);
+
+  const { token } = useContext(UserContext);
 
   return (
     <div className="container mt-3 mb-5 p-3 border rounded shadow">
@@ -70,9 +73,15 @@ const cart = () => {
         </tbody>
       </table>
       <h4>Total: ${totalFinal.toLocaleString("es-CL")}</h4>
-      <button type="button" className="btn btn-success">
+      <button type="button" className="btn btn-success"
+      disabled={cart.length === 0 || !token}>
         Confirmar Pedido
       </button>
+      {!token && (
+        <p className="text-danger mt-2">
+          Debes iniciar sesión para confirmar tu pedido.
+        </p>
+      )}
     </div>
   );
 };

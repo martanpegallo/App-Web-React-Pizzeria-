@@ -1,10 +1,12 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
+import { UserContext } from "../context/UserContext";
 
 function Navbar() {
   const {totalFinal} = useContext(CartContext);
-  const token=false; // Simulating a token for demonstration purposes
+  const {token, logout} = useContext(UserContext);
+  // const token=false; // Simulating a token for demonstration purposes
   // In a real application, you would retrieve this from your authentication state or context
 
   return (
@@ -37,13 +39,13 @@ function Navbar() {
               <li className="nav-item">
               {token ? 
                 <button type="button" class="btn btn-outline-secondary btn-sm m-1">
-                  <a className="nav-link" href="#">
-                    Logout
-                  </a>
+                  <Link className="nav-link" to="/profile">
+                  Profile
+                  </Link>
                 </button> : 
                 <button type="button" className="btn btn-outline-secondary btn-sm m-1">
-                  <Link className="nav-link" to="/login">
-                    Login
+                  <Link className="nav-link" to="/register">
+                    Register
                   </Link>
                 </button>
               }
@@ -51,13 +53,14 @@ function Navbar() {
               <li className="nav-item">
               {token ? 
                 <button type="button" class="btn btn-outline-secondary btn-sm m-1">
-                  <a className="nav-link" href="#">
-                  Profile
+                  <a className="nav-link" href="#"
+                  onClick={logout}>
+                    Logout
                   </a>
                 </button> : 
                 <button type="button" className="btn btn-outline-secondary btn-sm m-1">
-                  <Link className="nav-link" to="/register">
-                    Register
+                  <Link className="nav-link" to="/login">
+                    Login
                   </Link>
                 </button>
               }

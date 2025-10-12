@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-
+  const { login } = useContext(UserContext);
+ 
   const validarDatos = (e) => {
     e.preventDefault();
     if (email === "" || password === "") {
@@ -21,6 +23,8 @@ function Login() {
     setEmail("");
     setPassword("");
     setError(false);
+    login(); // Actualiza el estado de autenticación en el contexto
+
   };
   return (
     <form
@@ -54,7 +58,8 @@ function Login() {
           placeholder="minimo 6 caracteres"
         ></input>
       </div>
-      <button type="submit" className="btn btn-dark m-3 shadow">
+      <button type="submit" className="btn btn-dark m-3 shadow"
+      onClick={Login}>
         Login
       </button>
     </form>
