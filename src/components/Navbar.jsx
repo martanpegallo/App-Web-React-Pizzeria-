@@ -38,7 +38,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
               {token ? 
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1">
+                <button type="button" className="btn btn-outline-secondary btn-sm m-1">
                   <Link className="nav-link" to="/profile">
                   Profile
                   </Link>
@@ -52,7 +52,7 @@ function Navbar() {
               </li>
               <li className="nav-item">
               {token ? 
-                <button type="button" class="btn btn-outline-secondary btn-sm m-1">
+                <button type="button" className="btn btn-outline-secondary btn-sm m-1">
                   <a className="nav-link" href="#"
                   onClick={logout}>
                     Logout

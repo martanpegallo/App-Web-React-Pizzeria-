@@ -1,12 +1,14 @@
 import { useState } from 'react';
+import { UserContext } from '../context/UserContext';
 
 function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('false');
+    const {login} = UserContext;
 
-    const validarDatos = (e) => {
+    const validarDatos = async (e) => {
         e.preventDefault();
         if (email === '' || password === '' || confirmPassword === '') {
             alert('Todos los campos son obligatorios');
@@ -28,6 +30,7 @@ function Register() {
         setPassword('');
         setConfirmPassword('');
         setError(false);
+        await login({email, password});
     }
     return (
         <form className="formulario container m-3 p-5 border border-2 rounded shadow bg-success text-dark"
@@ -35,7 +38,7 @@ function Register() {
             
             <h2 className="text-center mb-4">Registrate como un nuevo usuario</h2>
             <div className="form-group mb-3">
-                <label for="exampleInputEmail1" className="form-label">Correo electronico</label>
+                <label htmlFor="exampleInputEmail1" className="form-label">Correo electronico</label>
                 <input 
                 type="email"
                 name='email'
@@ -46,9 +49,9 @@ function Register() {
                 </input>
             </div>
             <div className="form-group mb-3">
-                <label for="exampleInputPassword1" className="form-label">Contraseña</label>
+                <label htmlFor="exampleInputPassword1" className="form-label">Contraseña</label>
                 <input 
-                type="text"
+                type="password"
                 name='password'
                 value={password}
                 onChange={(e) => setPassword(e.target.value)} 
@@ -57,9 +60,9 @@ function Register() {
                 </input>
             </div>
             <div className="form-group mb-3">
-                <label for="exampleInputPassword2" className="form-label">Confirmar Contraseña</label>
+                <label htmlFor="exampleInputPassword2" className="form-label">Confirmar Contraseña</label>
                 <input 
-                type="text"
+                type="password"
                 name='confirmPassword'
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)} 

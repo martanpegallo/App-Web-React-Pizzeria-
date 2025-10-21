@@ -1,13 +1,16 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
-function Login() {
+function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const { login } = useContext(UserContext);
+  const { Navigate } = useNavigate();
  
-  const validarDatos = (e) => {
+  const validarDatos = async (e) => {
+
     e.preventDefault();
     if (email === "" || password === "") {
       alert("Todos los campos son obligatorios");
@@ -20,10 +23,11 @@ function Login() {
       return;
     }
     alert("Usuario logueado exitosamente");
-    setEmail("");
-    setPassword("");
+    // setEmail("");
+    // setPassword("");
     setError(false);
-    login(); // Actualiza el estado de autenticación en el contexto
+    await login({email, password}); // Actualiza el estado de autenticación en el contexto
+    // Navigate("/profile"); // Redirige al perfil después del login
 
   };
   return (
@@ -33,7 +37,7 @@ function Login() {
     >
       <h2 className="text-center mb-4">Login</h2>
       <div className="form-group mb-3">
-        <label for="exampleInputEmail1" className="form-label">
+        <label htmlFor="exampleInputEmail1" className="form-label">
           Correo electronico
         </label>
         <input
@@ -46,11 +50,11 @@ function Login() {
         ></input>
       </div>
       <div className="form-group mb-3">
-        <label for="exampleInputPassword1" className="form-label">
+        <label htmlFor="exampleInputPassword1" className="form-label">
           Contraseña
         </label>
         <input
-          type="text"
+          type="password"
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -58,12 +62,11 @@ function Login() {
           placeholder="minimo 6 caracteres"
         ></input>
       </div>
-      <button type="submit" className="btn btn-dark m-3 shadow"
-      onClick={Login}>
+      <button type="submit" className="btn btn-dark m-3 shadow">
         Login
       </button>
     </form>
   );
 }
 
-export default Login;
+export default LoginPage;

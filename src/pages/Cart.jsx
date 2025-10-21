@@ -8,6 +8,17 @@ const cart = () => {
   const { cart, aumentarCantidad, disminuirCantidad, totalFinal } =
     useContext(CartContext);
 
+const hacerChekout = async () => {
+  const res = await fetch ("http://localhost:5000/api/checkouts", {
+    method: "POST",
+    headers: {
+      "content-type": "application/json",
+      "authorization": `Bearer ${token}`
+    },
+    body: JSON.stringify(cart),
+  });
+}
+
   const { token } = useContext(UserContext);
 
   return (
@@ -74,6 +85,7 @@ const cart = () => {
       </table>
       <h4>Total: ${totalFinal.toLocaleString("es-CL")}</h4>
       <button type="button" className="btn btn-success"
+      onClick={hacerChekout}
       disabled={cart.length === 0 || !token}>
         Confirmar Pedido
       </button>
